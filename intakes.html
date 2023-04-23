@@ -1,0 +1,29 @@
+<div class="intakeFormContainer">
+    <h3>Ingreso</h3>
+    <div class="intakeForm">
+        <form action="">
+            <label for="intakeDrinkName">Nombre bebida</label>
+            <input type="text" name="" id="intakeDrinkName" placeholder="Nombre bebida" />
+
+            <label for="intakeBodegaName">Bodega / Marca</label>
+            <input type="text" name="" id="intakeBodegaName" placeholder="Bodega / Marca" />
+
+            <label for="">Tipo / uva</label>
+            <select name="" id="">
+                <option value="malbec">Malbec</option>
+                <option value="pinot">Pinot</option>
+            </select>
+
+            <label for="intakeQuantity">Cantidad</label>
+            <input type="number" name="" id="intakeQuantity" placeholder="Cantidad" min="1"
+                onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;" />
+
+            <label for="elabYearInput">Año de elaboracion</label>
+            <input type="number" name="" id="elabYearInput" placeholder="Año de elaboracion" min="1900" max="">
+
+            <button type="submit" id="intakeButton" class="">
+                BOTON
+            </button>
+        </form>
+    </div>
+</div>
