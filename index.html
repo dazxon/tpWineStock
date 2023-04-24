@@ -19,6 +19,17 @@
             };
             xhttp.open("GET", pageName + ".html", true);
             xhttp.send();
+
+            // this handle the date of fecha de guarda, to be initialized like current date
+            if (pageName === 'intakes') {
+                const int = setInterval(() => {
+                    let elem = document.getElementById('stockDate')
+                    if (elem !== null) {
+                        elem.value = getFullDate()
+                        clearInterval(int)
+                    }
+                }, 200);
+            }
         }
     </script>
 </head>
@@ -30,7 +41,7 @@
                 <a href="index.html">Home</a>
             </li>
             <li>
-                <a href="#" onclick="loadPage('intakes')">Intakes</a>
+                <a href="#" onclick="loadPage('intakes')">Ingreso</a>
             </li>
             <li>
                 <a href="#" onclick="loadPage('exits')">Egreso</a>
@@ -40,7 +51,6 @@
             </li>
         </ul>
     </nav>
-
     <div id="content"></div>
 </body>
 

@@ -31,17 +31,60 @@ nav ul li a:hover {
 
 /* form styles */
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.formContainer {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
 }
-label {
-  margin-bottom: 10px;
-}
-input {
+
+.formContainer h3 {
+  font-size: 24px;
   margin-bottom: 20px;
 }
+
+.divForm label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.divForm input,
+.divForm select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.divForm input:focus,
+.divForm select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px #e6f3ff;
+}
+
+.divForm button[type="submit"] {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.divForm button[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+
 
 /* end form styles */

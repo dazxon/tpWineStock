@@ -1,7 +1,7 @@
-<div class="intakeFormContainer">
+<div class="formContainer">
     <h3>Ingreso</h3>
-    <div class="intakeForm">
-        <form action="">
+    <div class="divForm">
+        <form action="" method="post">
             <label for="intakeDrinkName">Nombre bebida</label>
             <input type="text" name="" id="intakeDrinkName" placeholder="Nombre bebida" />
 
@@ -19,9 +19,12 @@
                 onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;" />
 
             <label for="elabYearInput">Año de elaboracion</label>
-            <input type="number" name="" id="elabYearInput" placeholder="Año de elaboracion" min="1900" max="">
+            <input type="number" name="" id="elabYearInput" placeholder="Año de elaboracion" min="" max="" value="" onchange="maxYear(this)">
 
-            <button type="submit" id="intakeButton" class="">
+            <label for="">Fecha de guarda</label>
+            <input type="date" name="" id="stockDate" value="" onchange="maxFullDate(this)">
+
+            <button type="submit" id="button" class="">
                 BOTON
             </button>
         </form>

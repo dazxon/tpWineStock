@@ -33,6 +33,18 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(data);
         });
+    } else if (req.url === '/index.html?') {
+        const cssPath = path.join(__dirname, 'index.html');
+        fs.readFile(cssPath, 'utf8', (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end(`Error loading ${cssPath}: ${err}`);
+                return;
+            }
+
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
 
         //loading style.css on demand
     } else if (req.url === '/style.css') {
@@ -77,8 +89,8 @@ const server = http.createServer((req, res) => {
         });
 
         //loading app.js on demand
-    } else if (req.url === '/style.css') {
-        const cssPath = path.join(__dirname, 'style.css');
+    } else if (req.url === '/app.js') {
+        const cssPath = path.join(__dirname, 'app.js');
         fs.readFile(cssPath, 'utf8', (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -86,7 +98,7 @@ const server = http.createServer((req, res) => {
                 return;
             }
 
-            res.writeHead(200, { 'Content-Type': 'text/css' });
+            res.writeHead(200, { 'Content-Type': 'text/javascript' });
             res.end(data);
         });
     } else {
@@ -97,4 +109,25 @@ const server = http.createServer((req, res) => {
 
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+
+//connection to database
+const mysql = require('mysql2');
+
+// Create a connection to the database
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'master',
+  password: 'Donita0708',
+  database: 'tpwinestock'
+});
+
+// Test the connection
+connection.connect((error) => {
+  if (error) {
+    console.error('Error connecting to database: ', error);
+  } else {
+    console.log('Connected to database!');
+  }
 });
