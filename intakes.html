@@ -1,41 +1,105 @@
 <div class="formContainer">
-    <h3>Ingreso</h3>
-    <div class="divForm">
-        <form action="" method="post">
-            <label for="intakeDrinkName">Nombre bebida</label>
-            <input type="text" name="" id="intakeDrinkName" placeholder="Nombre bebida" required />
+  <h3>Ingreso</h3>
+  <div class="divForm">
+    <form action="" method="post">
+      <label for="intakeDrinkName">Nombre bebida</label>
+      <input
+        type="text"
+        name=""
+        id="intakeDrinkName h"
+        placeholder="Nombre bebida"
+        required
+        oninput="this.setCustomValidity('')"
+        oninvalid="this.setCustomValidity('Por favor ingrese nombre de bebida')"
+      />
 
-            <label for="intakeBodegaName">Bodega / Marca</label>
-            <select name="" id="" onchange="handleSelectBodega(this)">
-                <option value="" disabled selected>Seleccione bodega / marca</option>
-                <option value="addBodega">Agregar bodega / marca</option>
-            </select>
+      <label for="intakeBodegaName">Bodega / Marca</label>
+      <select
+        name=""
+        id="intakeBodegaName"
+        onchange="handleSelectBodega(this)"
+        required
+        oninput="this.setCustomValidity('')"
+        oninvalid="this.setCustomValidity('Por favor seleccione o agregue una bodega')"
+      >
+        <option value="" disabled selected>Seleccione bodega / marca</option>
+        <option value="addBodega">Agregar bodega / marca</option>
+      </select>
 
-            <label for="" name="newBodega" style="display: none">Agregar bodega / marca</label>
-            <input type="text" name="newBodega" style="display: none" />
+      <label for="newBodega" name="newBodega" style="display: none"
+        >Agregar bodega / marca</label
+      >
+      <input
+        type="text"
+        name="newBodega"
+        id="newBodega"
+        style="display: none"
+        oninput="this.setCustomValidity('')"
+        oninvalid="this.setCustomValidity('Por favor ingrese nombre de nueva bodega')"
+      />
 
-            <label for="listWineType">Tipo / uva</label>
-            <select name="" id="listWineType" onchange="handleSelectWineType(this)">
-                <option value="" disabled selected>Seleccione uno</option>
-                <option value="addType">Agregar tipo / uva</option>
-            </select>
+      <label for="listWineType">Tipo / uva</label>
+      <select
+        name=""
+        id="listWineType"
+        onchange="handleSelectWineType(this)"
+        required
+        oninput="this.setCustomValidity('')"
+        oninvalid="this.setCustomValidity('Por favor seleccione o agregue un tipo de vino / uva')"
+      >
+        <option value="" disabled selected>Seleccione uno</option>
+        <option value="addType">Agregar tipo / uva</option>
+      </select>
 
-            <label for="newType" id="newType" name="newType" style="display: none">Agregar tipo / uva</label>
-            <input type="text" name="newType" id="newType" style="display: none" />
+      <label for="newType" id="newType" name="newType" style="display: none"
+        >Agregar tipo / uva</label
+      >
+      <input
+        type="text"
+        name="newType"
+        id="newType"
+        style="display: none"
+        oninput="this.setCustomValidity('')"
+        oninvalid="this.setCustomValidity('Por favor ingrese nuevo tipo de vino / uva')"
+      />
 
-            <label for="intakeQuantity">Cantidad</label>
-            <input type="number" name="" id="intakeQuantity" placeholder="Cantidad" min="1"
-                onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;"
-                onfocus="initialQuantity(this)" required />
+      <label for="intakeQuantity">Cantidad</label>
+      <input
+        type="number"
+        name=""
+        id="intakeQuantity"
+        placeholder="Cantidad"
+        min="1"
+        onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;"
+        onfocus="initialQuantity(this)"
+        required
+      />
 
-            <label for="elabYearInput">Año de elaboracion</label>
-            <input type="number" name="" id="elabYearInput" placeholder="Año de elaboracion" min="" max="" value=""
-                onchange="maxYear(this)" onfocus="intialYear(this)" required />
+      <label for="elabYearInput">Año de elaboracion</label>
+      <input
+        type="number"
+        name=""
+        id="elabYearInput"
+        placeholder="Año de elaboracion"
+        min=""
+        max=""
+        value=""
+        onchange="maxYear(this)"
+        onfocus="intialYear(this)"
+        required
+      />
 
-            <label for="">Fecha de guarda</label>
-            <input type="date" name="" id="stockDate" value="" onchange="maxFullDate(this)" required />
+      <label for="">Fecha de guarda</label>
+      <input
+        type="date"
+        name=""
+        id="stockDate"
+        value=""
+        onchange="maxFullDate(this)"
+        required
+      />
 
-            <button type="submit" id="button" class="">Add</button>
-        </form>
-    </div>
+      <button type="submit" id="button" class="">Add</button>
+    </form>
+  </div>
 </div>

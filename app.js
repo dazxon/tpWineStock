@@ -127,3 +127,5 @@ function getCurrentDateTime() {
     var timeString = hours + ":" + minutes + ":" + seconds;
     return dateString + " - " + timeString;
 }
+
+// here there are the custom invalid message of the forms

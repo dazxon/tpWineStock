@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "lru-cache": "^9.1.1",
     "mysql2": "^3.2.3"
   }
 }
