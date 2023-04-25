@@ -1,6 +1,5 @@
 # tpWineStock
 This Git repository contains an app that helps you keep track of your wine stock. With this app, you can add new wines to your stock, record entries and exits of each wine, add pictures and characteristics, and keep a record of every wine that you have had in your collection.
-Features
 
 ## Features
 
