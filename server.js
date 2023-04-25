@@ -88,6 +88,19 @@ const server = http.createServer((req, res) => {
             res.end(data);
         });
 
+        //loading inventory on demand
+    } else if (req.url === "/inventory.html") {
+        const cssPath = path.join(__dirname, "inventory.html");
+        fs.readFile(cssPath, "utf8", (err, data) => {
+            if (err) {
+                res.writeHead(500, { "Content-Type": "text/plain" });
+                res.end(`Error loading ${cssPath}: ${err}`);
+                return;
+            }
+
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.end(data);
+        });
         //loading app.js on demand
     } else if (req.url === "/app.js") {
         const cssPath = path.join(__dirname, "app.js");
@@ -101,6 +114,7 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { "Content-Type": "text/javascript" });
             res.end(data);
         });
+    
     } else {
         res.writeHead(404, { "Content-Type": "text/plain" });
         res.end(`Resource not found: ${req.url}`);
