@@ -3,8 +3,7 @@
   <div class="divForm">
     <form action="">
       <select type="" name="" id="exitDrinkNameList" placeholder="Nombre bebida">
-        <option value="valentin lacrado">Valentin lacrado</option>
-        <option value="toro viejo">toro viejo</option>
+        <option value="" disabled selected>Seleccione uno</option>
       </select>
 
       <label for="cantidad">Cantidad</label>
@@ -15,6 +14,8 @@
         placeholder="Cantidad"
         min="1"
         onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;"
+        onfocus="initialQuantity(this)"
+        required
       />
 
       <button type="submit" id="button" class="" >BOTON</button>

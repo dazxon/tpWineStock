@@ -1,32 +1,73 @@
 <div class="formContainer">
-    <h3>Ingreso</h3>
-    <div class="divForm">
-        <form action="" method="post">
-            <label for="intakeDrinkName">Nombre bebida</label>
-            <input type="text" name="" id="intakeDrinkName" placeholder="Nombre bebida" />
+  <h3>Ingreso</h3>
+  <div class="divForm">
+    <form action="" method="post">
+      <label for="intakeDrinkName">Nombre bebida</label>
+      <input
+        type="text"
+        name=""
+        id="intakeDrinkName"
+        placeholder="Nombre bebida"
+        required
+      />
 
-            <label for="intakeBodegaName">Bodega / Marca</label>
-            <input type="text" name="" id="intakeBodegaName" placeholder="Bodega / Marca" />
+      <label for="intakeBodegaName">Bodega / Marca</label>
+      <input
+        type="text"
+        name=""
+        id="intakeBodegaName"
+        placeholder="Bodega / Marca"
+        required
+      />
 
-            <label for="">Tipo / uva</label>
-            <select name="" id="">
-                <option value="malbec">Malbec</option>
-                <option value="pinot">Pinot</option>
-            </select>
+      <label for="listWineType">Tipo / uva</label>
+      <select name="" id="listWineType" onchange="handleSelect(this)">
+        <option value="" disabled selected>Seleccione uno</option>
+        <option value="addType">Agregar tipo / uva</option>
+      </select>
 
-            <label for="intakeQuantity">Cantidad</label>
-            <input type="number" name="" id="intakeQuantity" placeholder="Cantidad" min="1"
-                onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;" />
+      <label for="newType" id="newType" name="newType" style="display: none;"
+        >Agregar tipo / uva</label
+      >
+      <input type="text" name="newType" id="newType" style="display: none;" />
 
-            <label for="elabYearInput">Año de elaboracion</label>
-            <input type="number" name="" id="elabYearInput" placeholder="Año de elaboracion" min="" max="" value="" onchange="maxYear(this)">
+      <label for="intakeQuantity">Cantidad</label>
+      <input
+        type="number"
+        name=""
+        id="intakeQuantity"
+        placeholder="Cantidad"
+        min="1"
+        onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;"
+        onfocus="initialQuantity(this)"
+        required
+      />
 
-            <label for="">Fecha de guarda</label>
-            <input type="date" name="" id="stockDate" value="" onchange="maxFullDate(this)">
+      <label for="elabYearInput">Año de elaboracion</label>
+      <input
+        type="number"
+        name=""
+        id="elabYearInput"
+        placeholder="Año de elaboracion"
+        min=""
+        max=""
+        value=""
+        onchange="maxYear(this)"
+        onfocus="intialYear(this)"
+        required
+      />
 
-            <button type="submit" id="button" class="">
-                Add
-            </button>
-        </form>
-    </div>
+      <label for="">Fecha de guarda</label>
+      <input
+        type="date"
+        name=""
+        id="stockDate"
+        value=""
+        onchange="maxFullDate(this)"
+        required
+      />
+
+      <button type="submit" id="button" class="">Add</button>
+    </form>
+  </div>
 </div>
