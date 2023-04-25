@@ -1,9 +1,9 @@
-*{
+* {
   margin: 0 auto;
   padding: 0;
 }
 
-body{
+body {
   background-color: rgb(213, 213, 201);
 }
 
@@ -37,7 +37,6 @@ nav ul li a:hover {
 }
 
 /* end nav styles */
-
 
 /* form styles */
 
@@ -94,7 +93,5 @@ nav ul li a:hover {
 .divForm button[type="submit"]:hover {
   background-color: #0069d9;
 }
-
-
 
 /* end form styles */

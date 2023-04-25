@@ -7,18 +7,11 @@
       </select>
 
       <label for="cantidad">Cantidad</label>
-      <input
-        type="number"
-        name=""
-        id="exitQuantity"
-        placeholder="Cantidad"
-        min="1"
+      <input type="number" name="" id="exitQuantity" placeholder="Cantidad" min="1"
         onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;"
-        onfocus="initialQuantity(this)"
-        required
-      />
+        onfocus="initialQuantity(this)" required />
 
-      <button type="submit" id="button" class="" >BOTON</button>
+      <button type="submit" id="button" class="">BOTON</button>
     </form>
   </div>
 </div>
