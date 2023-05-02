@@ -27,7 +27,7 @@ function maxYear(e) {
 
 //this one is to fix the max date as current date
 function maxFullDate(e) {
-    if (e.value > getFullDate()) {
+    if (e.value > getFullDate() || !e.value) {
         e.value = getFullDate();
     }
 }
@@ -47,7 +47,7 @@ function getFullDate() {
 let cont1 = 0;
 function initialQuantity(e) {
     const INITIAL_VALUE = 1;
-    if (cont1 === 0) {
+    if (cont1 === 0 || !e.value) {
         e.value = INITIAL_VALUE;
         cont1++;
     }
@@ -57,7 +57,7 @@ function initialQuantity(e) {
 let cont2 = 0;
 function intialYear(e) {
     const currYear = new Date().getFullYear();
-    if (cont2 === 0) {
+    if (cont2 === 0 || !e.value) {
         e.value = currYear;
         cont2++;
     }
@@ -128,4 +128,31 @@ function getCurrentDateTime() {
     return dateString + " - " + timeString;
 }
 
-// here there are the custom invalid message of the forms
+// this is for making the checkmark appear when input value is ok
+let check01 = document.getElementById('checkOne')
+function validateCheckmark(elem) {
+    setTimeout(() => {     
+        if (elem.value) {
+            elem.classList.add('inputOk')
+        } else {
+            elem.classList.remove('inputOk')
+        }
+    }, 100);
+}
+
+//
+async function fetchData() {
+    const endpoint = 'https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/data';
+  
+    const response = await fetch(endpoint, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': 'your-api-key'
+      }
+    });
+  
+    const data = await response.json();
+  
+    return data;
+  }
+console.log(fetchData());  

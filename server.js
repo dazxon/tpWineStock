@@ -101,6 +101,7 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { "Content-Type": "text/html" });
             res.end(data);
         });
+        
         //loading app.js on demand
     } else if (req.url === "/app.js") {
         const cssPath = path.join(__dirname, "app.js");
@@ -125,22 +126,3 @@ server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
 
-//connection to database
-const mysql = require("mysql2");
-
-// Create a connection to the database
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "master",
-    password: "Donita0708",
-    database: "tpwinestock",
-});
-
-// Test the connection
-connection.connect((error) => {
-    if (error) {
-        console.error("Error connecting to database: ", error);
-    } else {
-        console.log("Connected to database!");
-    }
-});
