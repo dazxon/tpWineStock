@@ -6,12 +6,16 @@
       <input
         type="text"
         name=""
-        id="intakeDrinkName h"
+        id="intakeDrinkName"
         placeholder="Nombre bebida"
         required
         oninput="this.setCustomValidity('')"
         oninvalid="this.setCustomValidity('Por favor ingrese nombre de bebida')"
+        onkeydown="validateCheckmark(this)"
+        list="wine-name-options"
       />
+      <datalist id="wine-name-options"></datalist>
+      <span class="checkmark" id="checkOne"></span>
 
       <label for="intakeBodegaName">Bodega / Marca</label>
       <select
@@ -95,6 +99,7 @@
         name=""
         id="stockDate"
         value=""
+        onfocus="maxFullDate(this)"
         onchange="maxFullDate(this)"
         required
       />
