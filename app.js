@@ -129,30 +129,75 @@ function getCurrentDateTime() {
 }
 
 // this is for making the checkmark appear when input value is ok
-let check01 = document.getElementById('checkOne')
+let check01 = document.getElementById("checkOne");
 function validateCheckmark(elem) {
-    setTimeout(() => {     
+    setTimeout(() => {
         if (elem.value) {
-            elem.classList.add('inputOk')
+            elem.classList.add("inputOk");
         } else {
-            elem.classList.remove('inputOk')
+            elem.classList.remove("inputOk");
         }
     }, 100);
 }
 
-//
-async function fetchData() {
-    const endpoint = 'https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/data';
+//this function is to populate the wine types select
+function populateWineType() {
+    const selectElement = document.getElementById("listWineType");
+    const addedValues = new Set(); // Keep track of added values
   
-    const response = await fetch(endpoint, {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': 'your-api-key'
-      }
-    });
-  
-    const data = await response.json();
-  
-    return data;
+    fetch(
+      "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((obj) => {
+          const value = obj.wine_type;
+          if (!addedValues.has(value)) { // Check if value has already been added
+            const optionElement = document.createElement("option");
+            optionElement.value = value;
+            optionElement.textContent = value.toUpperCase();
+            selectElement.appendChild(optionElement);
+            addedValues.add(value); // Add value to set of added values
+          }
+        });
+      })
+      .catch((error) => console.error(error));
   }
-console.log(fetchData());  
+  
+
+function populateBodega() {
+    const selectElement = document.getElementById("intakeBodegaName");
+
+    fetch(
+        "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach((obj) => {
+                const optionElement = document.createElement("option");
+                optionElement.value = obj.wine_bodega;
+                optionElement.textContent = obj.wine_bodega.toUpperCase();
+                selectElement.appendChild(optionElement);
+            });
+        })
+        .catch((error) => console.error(error));
+
+}
+
+function populateWineNames() {
+    const selectElement = document.getElementById("wine-name-options");
+
+    fetch(
+        "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach((obj) => {
+                const optionElement = document.createElement("option");
+                optionElement.value = obj.wine_name.toUpperCase();
+                optionElement.textContent = obj.wine_type;
+                selectElement.appendChild(optionElement);
+            });
+        })
+        .catch((error) => console.error(error));
+}

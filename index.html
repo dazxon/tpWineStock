@@ -20,7 +20,7 @@
             xhttp.open("GET", pageName + ".html", true);
             xhttp.send();
 
-            // this handle the date of fecha de guarda, to be initialized like current date
+            // this handle the date of fecha de guarda, to be initialized like current date and populate selects
             if (pageName === 'intakes') {
                 const int = setInterval(() => {
                     let elem = document.getElementById('stockDate')
@@ -28,7 +28,11 @@
                         elem.value = getFullDate()
                         clearInterval(int)
                     }
+                    populateWineNames()
+                    populateBodega()
+                    populateWineType();
                 }, 200);
+
             }
         }
     </script>

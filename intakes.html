@@ -12,7 +12,9 @@
         oninput="this.setCustomValidity('')"
         oninvalid="this.setCustomValidity('Por favor ingrese nombre de bebida')"
         onkeydown="validateCheckmark(this)"
+        list="wine-name-options"
       />
+      <datalist id="wine-name-options"></datalist>
       <span class="checkmark" id="checkOne"></span>
 
       <label for="intakeBodegaName">Bodega / Marca</label>
