@@ -45,14 +45,11 @@ function getFullDate() {
 
 //this function receives a dom element start the value on 1
 function initialQuantity(e) {
-  let cont = 0;
-  return function (e) {
-    const INITIAL_VALUE = 1;
-    if (cont === 0 || !e.value) {
-      e.value = INITIAL_VALUE;
-      cont++;
-    }
-  };
+  const INITIAL_VALUE = 1;
+  if (cont1 === 0 || !e.value) {
+    e.value = INITIAL_VALUE;
+    cont1++;
+  }
 }
 
 //tis is the handle for initial quantity
@@ -61,14 +58,10 @@ const handleInitialQuantity = initialQuantity();
 //this function receives a dom element and start the value on the current year
 function intialYear(e) {
   const currYear = new Date().getFullYear();
-  let cont = 0;
-
-  return function () {
-    if (cont === 0 || !e.value) {
-      e.value = currYear;
-      cont++;
-    }
-  };
+  if (cont2 === 0 || !e.value) {
+    e.value = currYear;
+    cont2++;
+  }
 }
 
 //this is the handle of initialYear()
@@ -140,3 +133,75 @@ function getCurrentDateTime() {
 }
 
 // here there are the custom invalid message of the forms
+// this is for making the checkmark appear when input value is ok
+let check01 = document.getElementById("checkOne");
+function validateCheckmark(elem) {
+  setTimeout(() => {
+    if (elem.value) {
+      elem.classList.add("inputOk");
+    } else {
+      elem.classList.remove("inputOk");
+    }
+  }, 100);
+}
+
+//this function is to populate the wine types select
+function populateWineType() {
+  const selectElement = document.getElementById("listWineType");
+  const addedValues = new Set(); // Keep track of added values
+
+  fetch(
+    "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((obj) => {
+        const value = obj.wine_type;
+        if (!addedValues.has(value)) {
+          // Check if value has already been added
+          const optionElement = document.createElement("option");
+          optionElement.value = value;
+          optionElement.textContent = value.toUpperCase();
+          selectElement.appendChild(optionElement);
+          addedValues.add(value); // Add value to set of added values
+        }
+      });
+    })
+    .catch((error) => console.error(error));
+}
+
+function populateBodega() {
+  const selectElement = document.getElementById("intakeBodegaName");
+
+  fetch(
+    "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((obj) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = obj.wine_bodega;
+        optionElement.textContent = obj.wine_bodega.toUpperCase();
+        selectElement.appendChild(optionElement);
+      });
+    })
+    .catch((error) => console.error(error));
+}
+
+function populateWineNames() {
+  const selectElement = document.getElementById("wine-name-options");
+
+  fetch(
+    "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((obj) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = obj.wine_name.toUpperCase();
+        optionElement.textContent = obj.wine_type;
+        selectElement.appendChild(optionElement);
+      });
+    })
+    .catch((error) => console.error(error));
+}
