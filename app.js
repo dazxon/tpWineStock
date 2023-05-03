@@ -27,9 +27,9 @@ function maxYear(e) {
 
 //this one is to fix the max date as current date
 function maxFullDate(e) {
-    if (e.value > getFullDate()) {
-        e.value = getFullDate();
-    }
+  if (e.value > getFullDate()) {
+    e.value = getFullDate();
+  }
 }
 
 //this function returns the current full date in a string year-month-day
@@ -44,40 +44,35 @@ function getFullDate() {
 }
 
 //this function receives a dom element start the value on 1
-let cont1 = 0;
 function initialQuantity(e) {
-<<<<<<< HEAD
-  const INITIAL_VALUE = 1;
-  if (cont1 === 0 || !e.value) {
-    e.value = INITIAL_VALUE;
-    cont1++;
-  }
-=======
+  let cont = 0;
+  return function (e) {
     const INITIAL_VALUE = 1;
-    if (cont1 === 0 || !e.value) {
-        e.value = INITIAL_VALUE;
-        cont1++;
+    if (cont === 0 || !e.value) {
+      e.value = INITIAL_VALUE;
+      cont++;
     }
->>>>>>> 6e4f645ed6336acd6ce721682497cc436a06ed5b
+  };
 }
 
+//tis is the handle for initial quantity
+const handleInitialQuantity = initialQuantity();
+
 //this function receives a dom element and start the value on the current year
-let cont2 = 0;
 function intialYear(e) {
-<<<<<<< HEAD
   const currYear = new Date().getFullYear();
-  if (cont2 === 0 || !e.value) {
-    e.value = currYear;
-    cont2++;
-  }
-=======
-    const currYear = new Date().getFullYear();
-    if (cont2 === 0 || !e.value) {
-        e.value = currYear;
-        cont2++;
+  let cont = 0;
+
+  return function () {
+    if (cont === 0 || !e.value) {
+      e.value = currYear;
+      cont++;
     }
->>>>>>> 6e4f645ed6336acd6ce721682497cc436a06ed5b
+  };
 }
+
+//this is the handle of initialYear()
+const handleInitialYear = intialYear();
 
 // this code snippet handles the label and input for adding a new WINE TYPE if it is not already included in the select list
 function handleSelectWineType(e) {

@@ -75,7 +75,7 @@
         placeholder="Cantidad"
         min="1"
         onkeydown="if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode !== 8) event.returnValue = false;"
-        onfocus="initialQuantity(this)"
+        onfocus="handleInitialQuantity(this)"
         required
       />
 
@@ -89,7 +89,7 @@
         max=""
         value=""
         onchange="maxYear(this)"
-        onfocus="intialYear(this)"
+        onfocus="handleInitialYear(this)"
         required
       />
 
