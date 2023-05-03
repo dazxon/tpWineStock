@@ -170,6 +170,7 @@ function populateWineType() {
     .catch((error) => console.error(error));
 }
 
+//this to populate bodega names
 function populateBodega() {
   const selectElement = document.getElementById("intakeBodegaName");
 
@@ -188,6 +189,7 @@ function populateBodega() {
     .catch((error) => console.error(error));
 }
 
+//this to populate wine names
 function populateWineNames() {
   const selectElement = document.getElementById("wine-name-options");
 
@@ -199,7 +201,7 @@ function populateWineNames() {
       data.forEach((obj) => {
         const optionElement = document.createElement("option");
         optionElement.value = obj.wine_name.toUpperCase();
-        optionElement.textContent = obj.wine_type;
+        optionElement.textContent = obj.wine_name.toUpperCase();
         selectElement.appendChild(optionElement);
       });
     })
