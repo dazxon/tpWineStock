@@ -27,9 +27,15 @@ function maxYear(e) {
 
 //this one is to fix the max date as current date
 function maxFullDate(e) {
+<<<<<<< HEAD
   if (e.value > getFullDate() || !e.value) {
     e.value = getFullDate();
   }
+=======
+    if (e.value > getFullDate() || !e.value) {
+        e.value = getFullDate();
+    }
+>>>>>>> 6e4f645ed6336acd6ce721682497cc436a06ed5b
 }
 
 //this function returns the current full date in a string year-month-day
@@ -46,21 +52,37 @@ function getFullDate() {
 //this function receives a dom element start the value on 1
 let cont1 = 0;
 function initialQuantity(e) {
+<<<<<<< HEAD
   const INITIAL_VALUE = 1;
   if (cont1 === 0 || !e.value) {
     e.value = INITIAL_VALUE;
     cont1++;
   }
+=======
+    const INITIAL_VALUE = 1;
+    if (cont1 === 0 || !e.value) {
+        e.value = INITIAL_VALUE;
+        cont1++;
+    }
+>>>>>>> 6e4f645ed6336acd6ce721682497cc436a06ed5b
 }
 
 //this function receives a dom element and start the value on the current year
 let cont2 = 0;
 function intialYear(e) {
+<<<<<<< HEAD
   const currYear = new Date().getFullYear();
   if (cont2 === 0 || !e.value) {
     e.value = currYear;
     cont2++;
   }
+=======
+    const currYear = new Date().getFullYear();
+    if (cont2 === 0 || !e.value) {
+        e.value = currYear;
+        cont2++;
+    }
+>>>>>>> 6e4f645ed6336acd6ce721682497cc436a06ed5b
 }
 
 // this code snippet handles the label and input for adding a new WINE TYPE if it is not already included in the select list
@@ -131,6 +153,7 @@ function getCurrentDateTime() {
 // this is for making the checkmark appear when input value is ok
 let check01 = document.getElementById("checkOne");
 function validateCheckmark(elem) {
+<<<<<<< HEAD
   setTimeout(() => {
     if (elem.value) {
       elem.classList.add("inputOk");
@@ -138,10 +161,20 @@ function validateCheckmark(elem) {
       elem.classList.remove("inputOk");
     }
   }, 100);
+=======
+    setTimeout(() => {
+        if (elem.value) {
+            elem.classList.add("inputOk");
+        } else {
+            elem.classList.remove("inputOk");
+        }
+    }, 100);
+>>>>>>> 6e4f645ed6336acd6ce721682497cc436a06ed5b
 }
 
 //this function is to populate the wine types select
 function populateWineType() {
+<<<<<<< HEAD
   const selectElement = document.getElementById("listWineType");
   const addedValues = new Set(); // Keep track of added values
 
@@ -200,3 +233,64 @@ function populateWineNames() {
     })
     .catch((error) => console.error(error));
 }
+=======
+    const selectElement = document.getElementById("listWineType");
+    const addedValues = new Set(); // Keep track of added values
+  
+    fetch(
+      "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((obj) => {
+          const value = obj.wine_type;
+          if (!addedValues.has(value)) { // Check if value has already been added
+            const optionElement = document.createElement("option");
+            optionElement.value = value;
+            optionElement.textContent = value.toUpperCase();
+            selectElement.appendChild(optionElement);
+            addedValues.add(value); // Add value to set of added values
+          }
+        });
+      })
+      .catch((error) => console.error(error));
+  }
+  
+
+function populateBodega() {
+    const selectElement = document.getElementById("intakeBodegaName");
+
+    fetch(
+        "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach((obj) => {
+                const optionElement = document.createElement("option");
+                optionElement.value = obj.wine_bodega;
+                optionElement.textContent = obj.wine_bodega.toUpperCase();
+                selectElement.appendChild(optionElement);
+            });
+        })
+        .catch((error) => console.error(error));
+
+}
+
+function populateWineNames() {
+    const selectElement = document.getElementById("wine-name-options");
+
+    fetch(
+        "https://us-east-1.aws.data.mongodb-api.com/app/application-0-bqccj/endpoint/wines"
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            data.forEach((obj) => {
+                const optionElement = document.createElement("option");
+                optionElement.value = obj.wine_name.toUpperCase();
+                optionElement.textContent = obj.wine_type;
+                selectElement.appendChild(optionElement);
+            });
+        })
+        .catch((error) => console.error(error));
+}
+>>>>>>> 6e4f645ed6336acd6ce721682497cc436a06ed5b
